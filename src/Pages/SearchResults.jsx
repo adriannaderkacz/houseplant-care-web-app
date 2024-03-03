@@ -1,10 +1,10 @@
 
 
 import React, { useState, useEffect, useContext} from 'react';
-import SearchResultsPage from "../components/Results/Results"
+import SearchResultsPage from "../components/Results/Results.jsx"
 import { SearchResultsContext } from '../contexts/ContextSearchRes.jsx';
 import { Row, Col} from 'antd';
-import PlantCard from '../components/PlantCard';
+import PlantCard from '../components/PlantCard/index.jsx';
 
 function SearchResults() {
   const {searchResults, setSearchResults} = useContext(SearchResultsContext);

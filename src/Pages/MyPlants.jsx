@@ -8,11 +8,11 @@ import { usePlants } from '../contexts/PlantContext.jsx';
 import AddPlantModal from '../components/AddPlantModal/index.jsx';
 import PlantCard from '../components/PlantCard/index.jsx';
 import PlantProfile from '../components/PlantProfile/index.jsx';
-import WeatherWidget from "../components/WeatherWidget"
-import TaskList from '../components/TaskList';
+import WeatherWidget from "../components/WeatherWidget/index.jsx"
+import TaskList from '../components/TaskList/index.jsx';
 import { MyPlantsContext, MyPlantsProvider } from '../contexts/ContextMyPlants.jsx';
-import { ToDoContext, ToDoProvider } from '../contexts/ContextsToDos'
-import { LocationProvider, LocationContext } from '../contexts/ContextLocation';
+import { ToDoContext, ToDoProvider } from '../contexts/ContextsToDos.jsx'
+import { LocationProvider, LocationContext } from '../contexts/ContextLocation.jsx';
 
 function MyPlants() {
     // plants array for development testing:
@@ -184,4 +184,5 @@ function MyPlants() {
 }
 
 export default MyPlants;
+
 
