@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card } from 'antd';
 import placeholderPlantImage from '../../assets/images/placeholder-img.png';
+import perenualFetch from '../../utils/perenualFetch'
+
 
 
 const PlantOfTheDay = () => {
@@ -10,28 +12,35 @@ const PlantOfTheDay = () => {
         imageUrl: placeholderPlantImage
     };
 
-    // Commented out - to be used to fetch plant data from an API later
-    // useEffect(() => {
-    //     fetch('https://api.example.com/plantoftheday')
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             setPlant({
-    //                 name: data.name,
-    //                 imageUrl: data.imageUrl
-    //             });
-    //         })
-    //         .catch(error => console.error("Failed to fetch plant of the day:", error));
-    // }, []);
+    function hasOneDayPassed(){
+    var date = new Date().toLocaleDateString();
+    
+    if (localStorage.yourapp_date == date)
+        return false;
 
-    return (
-        <Card
-            title="Plant of the Day"
-            style={{ width: 240 }}
-            cover={<img alt={plant.name} src={plant.imageUrl} />}
-        >
-            <Card.Meta title={plant.name} description={plant.description} />
-        </Card>
-    );
+    localStorage.yourapp_date = date;
+    return true;
+    }
+
+
+// some function which should run once a day
+function runOncePerDay() {
+    if (!hasOneDayPassed()) return false;
+
+    // your code below
+    alert('Good morning!');
+}
+
+
+return (
+    <Card
+        title="Plant of the Day"
+        style={{ width: 240 }}
+        cover={<img alt={plant.name} src={plant.imageUrl} />}
+    >
+        <Card.Meta title={plant.name} description={plant.description} />
+    </Card>
+);
 };
 
 export default PlantOfTheDay;
