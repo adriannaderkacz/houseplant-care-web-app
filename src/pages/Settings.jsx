@@ -8,17 +8,29 @@ import searchWeatherAPIfetch from '../utils/searchWeatherAPIfetch';
 import weatherAPIfetch from '../utils/weatherAPIfetch';
 const { Search } = Input;
 
-const userNameSearch = (values) => {
-  localStorage.setItem('username', values);
-  console.log('Username submitted:', values);
-};
+// const userNameSearch = (values) => {
+//   localStorage.setItem('username', values);
+//   setUsername(values)
+//   console.log('Username submitted:', values);
+// };
 
 const Settings = () => {
   const { setLocation } = useContext(LocationContext); 
 
   const [weatherData, setWeatherData] = useState(null);
 
+  const [username, setUsername] = useState('')
+
+
+
+  const userNameSearch = (values) => {
+    localStorage.setItem('username', values);
+    setUsername(values)
+    console.log('Username submitted:', values);
+  };
+
   const onSearch = (value) => {
+
     if (value.trim !== '') {
       searchWeatherAPIfetch({ location: { location }, setLocation: { setLocation }, value });
     }
@@ -26,6 +38,9 @@ const Settings = () => {
 
   useEffect(() => {
     const handleStorage = () => {
+      const storedUsername = localStorage.getItem('username');
+
+      setUsername(storedUsername)
       
       const location = JSON.parse(localStorage.getItem('location'));
       
@@ -64,6 +79,8 @@ const Settings = () => {
     weatherAPIfetch({ location: storedLocation, setLocation });
   }
 
+ 
+
   
   function error() {
     console.log('Not able to retrieve location');
@@ -71,13 +88,13 @@ const Settings = () => {
 
   return (
     <>
-      <Card title="Username" className="weatherCard">
+      <Card title={`Username: ${username} `} className="weatherCard">
         <div className="searchSection">
           <Search placeholder="Enter Username" onSearch={userNameSearch} style={{ flex: 1 }} />
         </div>
       </Card>
       <LocationProvider>
-        <Card title="Location" className="weatherCard">
+        <Card title={`Location: ${weatherData ? weatherData.name : 'Loading...'}`} className="weatherCard">
           <div className="searchSection">
             <Search placeholder="Enter Your Location" onSearch={onSearch} style={{ flex: 1 }} />
             <Button onClick={getUserLocation}>Use current location</Button>
