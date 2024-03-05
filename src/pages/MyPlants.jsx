@@ -63,13 +63,13 @@ function MyPlants() {
             <Button onClick={() => toggleAddPlantModal(true)} >Add New Plant</Button>
         </Flex>
 
-        <Row>
+        <Row justify="space-around">
             {/* add new plant modal */}
             <AddPlantModal 
             addPlantModal={addPlantModal} 
             toggleAddPlantModal={toggleAddPlantModal}/>
             {/* if no plants in collection then add button to click here to add new plants */}
-            <Col span={16}>
+            <Col xs={24} sm={24} md={12} lg={12} xl={12} >
                 {/* dynamically render plant cards here */}
                 <Space direction="vertical" size={16}>
                     <Space wrap size={16}>
@@ -90,7 +90,7 @@ function MyPlants() {
                 />
             )
             }
-            <Col span={8}>
+            <Col xs={24} sm={24} md={12} lg={8} xl={8}>
                 <TaskList toDos={toDos} setToDos={setToDos}/>
             </Col>
         </Row>

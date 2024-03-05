@@ -88,19 +88,24 @@ const Settings = () => {
 
   return (
     <>
-      <Card title={`Username: ${username} `} className="weatherCard">
+    <div xs={24} sm={24} md={12} lg={8} xl={8} style={{ marginBottom: 75 }}>
+    <Card title={`Username: ${username} `} className="weatherCard">
         <div className="searchSection">
           <Search placeholder="Enter Username" onSearch={userNameSearch} style={{ flex: 1 }} />
         </div>
-      </Card>
-      <LocationProvider>
-        <Card title={`Location: ${weatherData ? weatherData.name : 'Loading...'}`} className="weatherCard">
+      </Card> 
+    </div>
+    <div xs={16} sm={16} md={16} lg={8} xl={8} style={{ marginBottom: 16 }}>
+    <LocationProvider>
+        <Card title={`Location: ${weatherData ? weatherData.name : 'Loading...'}`} className="weatherCard" >
           <div className="searchSection">
-            <Search placeholder="Enter Your Location" onSearch={onSearch} style={{ flex: 1 }} />
+            <Search placeholder="Enter Your Location" onSearch={onSearch} style={{ flex: 1  }} />
             <Button onClick={getUserLocation}>Use current location</Button>
           </div>
         </Card>
       </LocationProvider>
+    </div>
+
     </>
   );
 };
