@@ -3,10 +3,17 @@ import Calendar from '../components/Calendar'
 import TaskList from '../components/TaskList';
 import { ToDoContext, ToDoProvider } from '../contexts/ContextsToDos'
 import WeatherWidget from '../components/WeatherWidget';
-import { Row, Col } from 'antd';
+import { Row, Col, Layout } from 'antd';
 import { LocationProvider, LocationContext } from '../contexts/ContextLocation'
 import '../../src/index.css'
 import DashSearchBar from '../components/DashSearchBar';
+
+// Basic page CSS
+const layoutStyle = {
+    backgroundColor: 'var(--background-color)',
+    padding: 15,
+    borderRadius: '1%'
+}
 
 function WateringLog() {
 
@@ -19,7 +26,7 @@ return (
     {/* Wrap the components in the Providers */}
     <ToDoProvider>
     <LocationProvider>
-
+<Layout style={layoutStyle}>
         <Row gutter={16} style={{ marginBottom: 16 }}>
             <Col xs={24} sm={24} md={16} lg={16} xl={16} style={{ marginBottom: 16 }}>
                 <Calendar toDos={toDos} setToDos={setToDos} />
@@ -37,7 +44,7 @@ return (
                 </div>
             </Col>
         </Row>
-     
+        </Layout>
     </LocationProvider>
     </ToDoProvider>
     </>

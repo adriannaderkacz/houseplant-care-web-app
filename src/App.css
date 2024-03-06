@@ -1,5 +1,4 @@
 /*OVERRIDING ANTD ELEMENTS*/
-
 .ant-layout-sider-trigger {
     background-color: #285521 !important;
 }
@@ -107,7 +106,7 @@
 
 .ant-picker-month-btn:hover,
 .ant-picker-year-btn:hover {
-    color: #285521 !important!
+    color: #285521 !important;
 }
 
 .ant-picker-panel:hover,

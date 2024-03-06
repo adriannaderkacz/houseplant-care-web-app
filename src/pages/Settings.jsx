@@ -1,18 +1,24 @@
 // show option to retreive user name
 // show option for users to input location 
 
-import { Input, Button, Card } from 'antd';
+import { Input, Button, Card, Layout, Row, Flex } from 'antd';
 import React, { useState, useEffect, useContext } from 'react';
 import { LocationContext, LocationProvider } from '../contexts/ContextLocation';
 import searchWeatherAPIfetch from '../utils/searchWeatherAPIfetch';
 import weatherAPIfetch from '../utils/weatherAPIfetch';
 const { Search } = Input;
 
-// const userNameSearch = (values) => {
-//   localStorage.setItem('username', values);
-//   setUsername(values)
-//   console.log('Username submitted:', values);
-// };
+// Basic page CSS
+const layoutStyle = {
+  backgroundColor: 'var(--background-color)',
+  padding: 15,
+  borderRadius: '1%'
+}
+
+const userNameSearch = (values) => {
+  localStorage.setItem('username', values);
+  console.log('Username submitted:', values);
+};
 
 const Settings = () => {
   const { setLocation } = useContext(LocationContext); 
